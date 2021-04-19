@@ -1,41 +1,57 @@
-const heart = document.querySelector("#pil-heart");
 const heartPaths = document.querySelectorAll("#pil-heart > path");
-const separator = document.querySelector("#pil-separator");
+const heartStyles = ``;
 const separatorPaths = document.querySelectorAll("#pil-separator > path");
-const text = document.querySelector("#pil-text");
 const textPaths = document.querySelectorAll("#pil-text > path");
 
 let delay = 0.1;
 let acc = 0.5;
 const pathDuration = 1.5;
-const fillDuration = 0.5
+const fillDuration = 0.5;
 
-const pathStyles = (path, offset = 0) => {
+const pathCss = (path, index, selector, offset = 0) => {
   const length = path.getTotalLength();
-  path.style.strokeDasharray = length;
-  path.style.strokeDashoffset = length;
-  path.style.animation = `line ${pathDuration + offset}s ease forwards ${acc}s`;
+  const pathStyles = `
+    ${selector}:nth-child(${index +    1}) {
+      stroke-dasharray: ${length};
+      stroke-dashoffset: ${length};
+      animation: line ${pathDuration + offset}s ease forwards ${acc}s;
+    }
+  `;
   acc += delay;
-}
+  return pathStyles;
+};
 
-for (path of heartPaths) {
-  pathStyles(path, 4);
-}
+let heartPathsCss = "";
+heartPaths.forEach((path, idx) => {
+  heartPathsCss += pathCss(path, idx, "#pil-heart > path", 4);
+});
 
-for (path of separatorPaths) {
-  pathStyles(path);
-}
+let separatorPathsCss = "";
+separatorPaths.forEach((path, idx) => {
+  separatorPathsCss += pathCss(path, idx, "#pil-separator > path");
+});
 
-for (path of textPaths) {
-  pathStyles(path);
-}
+let textPathsCss = "";
+textPaths.forEach((path, idx) => {
+  textPathsCss += pathCss(path, idx, "#pil-text > path");
+});
 
-heart.style.animation = `fill-red ${fillDuration}s ease forwards ${acc + 1}s`;
-
-separator.style.animation = `fill-blue ${fillDuration}s ease forwards ${
-  acc + 1
-}s`;
-
-text.style.animation = `fill-blue ${fillDuration}s ease forwards ${
+const style = `
+  <style type="text/css">
+    ${heartPathsCss}
+    ${separatorPathsCss}
+    ${textPathsCss}
+    #pil-text {
+      animation: fill-blue ${fillDuration}s ease forwards ${
   acc + pathDuration - fillDuration
-}s`;
+}s;
+    }
+    #pil-separator {
+      animation: fill-blue ${fillDuration}s ease forwards ${acc + 1}s;
+    }
+    #pil-heart {
+      animation: fill-red ${fillDuration}s ease forwards ${acc + 1}s;
+    }
+  </style>`;
+
+document.write(style);
