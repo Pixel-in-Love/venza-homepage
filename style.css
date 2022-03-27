@@ -10,6 +10,9 @@ body {
   display: flex;
   align-items: center;  
   justify-content: center;
+  background-color: #f0f8fb;
+  padding-left: 10%;
+  padding-right: 10%;
 }
 
 @keyframes line {
@@ -24,16 +27,6 @@ body {
   }
 
   to {
-    fill: #0B0CAC;
-  }
-}
-
-@keyframes fill-red {
-  from {
-    fill: transparent;
-  }
-
-  to {
-    fill: #FF5576;
+    fill: #002766;
   }
 }
