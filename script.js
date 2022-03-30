@@ -5,6 +5,12 @@ let acc = 0.5;
 const pathDuration = 1.5;
 const fillDuration = 0.5;
 
+let xVal = 0;
+let yVal = 0;
+let main = document.querySelector("body");
+let width = main.clientWidth;
+let heigth = main.clientHeight;
+
 const pathCss = (path, index, selector, offset = 0) => {
   const length = path.getTotalLength();
   const pathStyles = `
@@ -15,7 +21,6 @@ const pathCss = (path, index, selector, offset = 0) => {
     }
   `;
   acc += delay;
-  console.log(acc);
   return pathStyles;
 };
 
@@ -23,7 +28,6 @@ let logoPathsCSS = "";
 logoPaths.forEach((path, idx) => {
   logoPathsCSS += pathCss(path, idx, "#valanza-logo > path", 2);
 });
-console.log(acc);
 const style = `
   <style type="text/css">
     ${logoPathsCSS}
@@ -33,3 +37,10 @@ const style = `
   </style>`;
 
 document.write(style);
+
+window.addEventListener("mousemove", (e) => {
+  xVal = (e.clientX + document.documentElement.scrollLeft) / width;
+  yVal = e.clientY / heigth;
+  main.style.setProperty("--mouse-x", xVal);
+  main.style.setProperty("--mouse-y", yVal);
+});

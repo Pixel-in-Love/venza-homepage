@@ -1,3 +1,8 @@
+:root {
+  --mouse-x: 0.5;
+  --mouse-y: 0.5;
+}
+
 * {
   padding: 0;
   margin: 0;
@@ -10,10 +15,46 @@ body {
   display: flex;
   align-items: center;  
   justify-content: center;
-  background-color: #f0f8fb;
+  background-image: radial-gradient(circle at calc(var(--mouse-x) * 100%) calc(var(--mouse-y, 0.5) * 100%), transparent 0, #f0f8fb 20rem), url('bg.jpg');
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
   padding-left: 10%;
   padding-right: 10%;
+  cursor: none;
 }
+
+.overlay {
+  background-image: url('bg.jpg');
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  position: absolute;
+  border-radius: 50%;
+  animation: overlay2 1s;
+}
+
+#valanza-logo {
+  z-index: 1;
+}
+
+@keyframes overlay2 {
+  from {
+    width: 100vw;
+    height: 100vw;
+    top: 0;
+    left: 0;
+  }
+  to {
+    width: 0;
+    height: 0;
+    top: 50%;
+    left: 50%;
+  }
+}
+
 
 @keyframes line {
   to {
