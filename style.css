@@ -36,6 +36,23 @@ body {
   animation: overlay2 1s;
 }
 
+.container {
+  width: 100%;
+}
+
+svg {
+  max-width: 100%;
+}
+
+#subtitle {
+  font-family: 'Poppins', sans-serif;
+  color: #002766;
+  text-align: right;
+  font-size: 3vw;
+  margin-top: 1vw;
+  visibility: hidden;
+}
+
 #valanza-logo {
   z-index: 1;
 }

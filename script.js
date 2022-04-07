@@ -1,4 +1,7 @@
 const logoPaths = document.querySelectorAll("#valanza-logo > path");
+const subtitle = document.getElementById('subtitle');
+
+const typewriter = new Typewriter(subtitle, { loop: false });
 
 let delay = 0.1;
 let acc = 0.5;
@@ -37,6 +40,13 @@ const style = `
   </style>`;
 
 document.write(style);
+
+setTimeout(function(){
+  subtitle.style.visibility = "initial";
+  typewriter.typeString('by VASALTO').callFunction(function(state) {
+    state.elements.cursor.style.visibility = 'hidden';
+  }).start();
+},4500)
 
 window.addEventListener("mousemove", (e) => {
   xVal = (e.clientX + document.documentElement.scrollLeft) / width;
