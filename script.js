@@ -1,4 +1,4 @@
-const logoPaths = document.querySelectorAll("#valanza-logo > path");
+const logoPaths = document.querySelectorAll("#venza-logo > path");
 const subtitle = document.getElementById('subtitle');
 
 const typewriter = new Typewriter(subtitle, { loop: false });
@@ -29,12 +29,12 @@ const pathCss = (path, index, selector, offset = 0) => {
 
 let logoPathsCSS = "";
 logoPaths.forEach((path, idx) => {
-  logoPathsCSS += pathCss(path, idx, "#valanza-logo > path", 2);
+  logoPathsCSS += pathCss(path, idx, "#venza-logo > path", 2);
 });
 const style = `
   <style type="text/css">
     ${logoPathsCSS}
-    #valanza-logo {
+    #venza-logo {
       animation: fill-blue ${fillDuration}s ease forwards ${acc + pathDuration - fillDuration + 2}s;
     }
   </style>`;

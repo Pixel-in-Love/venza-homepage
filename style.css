@@ -46,14 +46,14 @@ svg {
 
 #subtitle {
   font-family: 'Poppins', sans-serif;
-  color: #002766;
+  color: #001E5C;
   text-align: right;
   font-size: 3vw;
   margin-top: 1vw;
   visibility: hidden;
 }
 
-#valanza-logo {
+#venza-logo {
   z-index: 1;
 }
 
@@ -85,6 +85,6 @@ svg {
   }
 
   to {
-    fill: #002766;
+    fill: #001E5C;
   }
 }
